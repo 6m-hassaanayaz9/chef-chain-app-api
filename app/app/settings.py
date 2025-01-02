@@ -30,6 +30,9 @@ ALLOWED_HOSTS = ["0.0.0.0"]
 
 
 # Application definition
+SPECTACULAR_SETTINGS = {
+    'COMPONENT_SPLIT_REQUEST': True,
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -39,6 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'rest_framework',
+    'user',
+    'rest_framework.authtoken',
+    'drf_spectacular',
+    'recipe',
 ]
 
 
@@ -72,6 +80,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'app.wsgi.application'
 
+AUTH_USER_MODEL = 'core.User'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -129,3 +138,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
